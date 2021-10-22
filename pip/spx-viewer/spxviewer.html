@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <title> SPX Statistics Viewer</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<link rel="stylesheet" href="./src/spx.css">
+</head> 
+
+<body>
+<!-- Header -->
+<header style="padding:10px; background: #40D0FF; border-radius: 15px 15px 0px 0px; ">
+	<h2 id="headerTitle" style="text-align:center">SPX Statistics Data Year ... </h2>
+	<p id="dlm" style="font-size: 11px; text-align: center; font-style: italic; margin: 0px;"> &emsp;</p>
+	<div style="text-align:left;" id="hide-area">
+		<span class="inLine">
+			<label><b>Year : </b></label>
+			<input type="text" id="yearInput" maxlength="4" style="margin-left: 10px; width: 60%; outline-width: 0; ">
+		</span>
+	</div>
+	
+</header>
+
+<div class="error" id="error-area">No Error Message...</div>
+
+<!-- Content -->
+<div id="content" style="min-height:100px;">
+<p id="info"></p>
+
+<div class="contentRow">
+	<div class="contentColumn" id="statisticsView"  style="width:35%;">
+		<div id="pnlByDay0" style="padding-bottom:10px;"></div>
+		<hr style="height:1.5px;border-width:0;color:#87CEFA;background-color:#87CEFA;margin: 0px 10px;">
+		<div style="text-align:left;"  id="input-area">
+			<span class="inLine">
+				<input type="radio" id="hlr" name="fav_rang" value="hlr" checked="checked">
+				<label for="html">High Low Range</label><br>
+				<input type="radio" id="cor" name="fav_rang" value="cor">
+				<label for="css">Close Open Range : </label><br>
+				<input type="text" id="rangeInput" value="25" style="margin: 5px 0px 5px 10px; width: 25%; outline-width: 0; ">
+			</span>
+		</div>
+		<div id="pnlByDay2" style="padding-bottom:10px;"></div>
+		<hr style="height:1.5px;border-width:0;color:#87CEFA;background-color:#87CEFA; margin: 0px 10px;">
+		
+		<div id="pnlByDay1" style="padding-bottom:10px;"></div>
+		<hr style="height:1.5px;border-width:0;color:#87CEFA;background-color:#87CEFA; margin: 0px 10px;">
+	</div>
+	<div class="contentColumn" id="rawData" style="width:65%;">
+		
+	</div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<footer class="inLine" style="padding:10px; background: #f0f0f0; justify-content: center; margin-top: 20px;">
+   Viewer Version: 1.0.0 &nbsp;&nbsp; <b>&copy; 2021 kelvin526</b>
+</footer>
+
+<script type="text/javascript" src="./src/spx-transform.js"></script>
+</body>
+</html>

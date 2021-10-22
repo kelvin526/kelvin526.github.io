@@ -1,0 +1,88 @@
+body { font-family:'Stag Sans Light', sans-serif; }
+table {
+	font-size: 14px;
+}
+td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 0px 10px;
+  max-width:10%; 
+}
+th {
+  border: 1px solid #87CEFA;
+  padding: 5px 10px;
+  background-color: #3895D3;
+  text-align: center;  
+}
+.inLine {
+	display:flex; 
+	align-items: center;
+	font-family:Calibri;
+}
+.collapsible {
+  background-color: #888;
+  color: white;
+  cursor: pointer;
+  padding: 5px 10px 5px 10px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 14px;
+  border-radius: 5px;
+}
+.active, .collapsible:hover {
+  background-color: #666;
+}
+.blockContent {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+.error {
+	background: #FDD7E4;
+	border: 2px ridge #F3362A;
+	border-radius: 10px;
+	padding: 5px 5px 5px 15px;
+	font-size: 14px;
+	font-family: helvetica;
+	margin: 10px;
+	color: red;
+	display: none;
+}
+#yearInput{
+	border: 2px dashed #FFFFFF;
+	border-radius: 15px;
+	width: 100%;
+	padding: 2px 10px;
+	font-size: 14px;
+	background: #87CEFA;
+}
+#hide-area {
+	display: flex;
+	margin-left: 10px;
+	margin-top: -30px;
+}
+* {
+  box-sizing: border-box;
+}
+
+#input-area {
+	display: flex;
+	margin-left: 10px;
+	margin-top: 10px;
+	font-size: 13px;
+}
+* {
+  box-sizing: border-box;
+}
+.contentColumn{
+  float: left;
+  padding: 10px;
+}
+.contentRow:after {
+  content: "";
+  display: table;
+  clear: both;
+}
