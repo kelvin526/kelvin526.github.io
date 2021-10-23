@@ -246,7 +246,17 @@ function createStatisticsView()
 	google.charts.load('current', {'packages':['bar', 'corechart']});
 	google.charts.setOnLoadCallback(drawChart);
 	google.charts.setOnLoadCallback(drawCandlestick);
-	google.charts.setOnLoadCallback(drawChartWithInput);
+	
+	input = parseInt(document.getElementById("rangeInput").value)
+	if((input.toString().length >=1))
+	{
+		google.charts.setOnLoadCallback(drawChartWithInput(input));
+	}
+	else
+	{
+		google.charts.setOnLoadCallback(drawChartWithInput);
+	}
+	
 }
 
 function resetContent()
@@ -254,6 +264,9 @@ function resetContent()
 	document.getElementById("headerTitle").innerHTML = "SPX Statistics Data Year ...";
 	document.getElementById("dlm").innerHTML = "Loaded @ </b>" + Date().slice(16,24);
 	document.getElementById("rawData").innerHTML = "";
+	document.getElementById('pnlByDay0').innerHTML = "";
+	document.getElementById('pnlByDay1').innerHTML = "";
+	document.getElementById('pnlByDay2').innerHTML = "";
 }
 
 function setErrorMsg(msg)
