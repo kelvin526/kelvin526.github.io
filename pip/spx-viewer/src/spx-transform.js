@@ -264,6 +264,11 @@ function resetContent()
 	document.getElementById("headerTitle").innerHTML = "SPX Statistics Data Year ...";
 	document.getElementById("dlm").innerHTML = "Loaded @ </b>" + Date().slice(16,24);
 	document.getElementById("rawData").innerHTML = "";
+}
+
+function resetContentAll()
+{
+	resetContent();
 	document.getElementById('pnlByDay0').innerHTML = "";
 	document.getElementById('pnlByDay1').innerHTML = "";
 	document.getElementById('pnlByDay2').innerHTML = "";
@@ -271,7 +276,7 @@ function resetContent()
 
 function setErrorMsg(msg)
 {
-	resetContent();
+	resetContentAll();
 	document.getElementById("error-area").innerHTML = msg;
 	document.getElementById("error-area").style.display = "inherit";
 }
