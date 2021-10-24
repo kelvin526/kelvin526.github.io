@@ -92,16 +92,14 @@ function drawChart()
 
 function drawChartWithInput(inputValue = 25)
 {
-
-	var titleName = "";
 	var data = new google.visualization.DataTable();
 	data.addColumn('string', 'Day of Week');
 	data.addColumn('number', '+ve');
 	data.addColumn('number', '-ve');
-	
 	var totalPositive = [0,0,0,0,0]
 	var totalNegative = [0,0,0,0,0]
-	
+	var titleName = "";
+
 	if(document.getElementById('hlr').checked) {
 		titleName = "SPX High Low Change > ";
 		for (var dateData of spxModel.SPX) {
@@ -115,7 +113,7 @@ function drawChartWithInput(inputValue = 25)
 			}			
 			dayStr.indexOf(dateData.DoW);
 		}
-	}else if(document.getElementById('cor').checked) {
+	}else{
 		titleName = "SPX Close Open Change > ";
 		for (var dateData of spxModel.SPX) {
 			if(dateData.OpenCloseDiff >= inputValue)
@@ -246,17 +244,8 @@ function createStatisticsView()
 	google.charts.load('current', {'packages':['bar', 'corechart']});
 	google.charts.setOnLoadCallback(drawChart);
 	google.charts.setOnLoadCallback(drawCandlestick);
-	
-	input = parseInt(document.getElementById("rangeInput").value)
-	if((input.toString().length >=1))
-	{
-		google.charts.setOnLoadCallback(drawChartWithInput(input));
-	}
-	else
-	{
-		google.charts.setOnLoadCallback(drawChartWithInput);
-	}
-	
+	google.charts.setOnLoadCallback(drawChartWithInput);
+	input = parseInt(document.getElementById("rangeInput").value);
 }
 
 function resetContent()
