@@ -46,17 +46,20 @@ def process_table(_currentJsonContent, _html: str) -> str:
 	TotalDay = [0,0,0,0,0] #Mon=0 > Fri =4
 	TotalDayPositive = [0,0,0,0,0] 
 	result = ""
+	lastDateFromJson = "";
 	cacheDayData = ""
 	cacheWeekday = 0
 	weekday = 0
 	counter = 0
 	tmrCloseValue = 0
-	preCloseValueFromJson = 0
+	lastCloseValueFromJson = 0
 	tmrPL = 0
 	openCloseDiff = 0
+	breakOutFlag = False
 
 	if _currentJsonContent:
-		preCloseValueFromJson = (_currentJsonContent["SPX"][0])["Close"] #float(((((lastAvailableDayData.split("\"Close\":"))[1]).split(","))[0]).strip())
+		lastCloseValueFromJson = (_currentJsonContent["SPX"][0])["Close"] #float(((((lastAvailableDayData.split("\"Close\":"))[1]).split(","))[0]).strip())
+		lastDateFromJson = (_currentJsonContent["SPX"][0])["Date"]
 	if "</tr>" in _html: #Only proceed if have data
 		resultByDay = _html.split("</tr>")
 		for dayData in resultByDay:
@@ -72,6 +75,9 @@ def process_table(_currentJsonContent, _html: str) -> str:
 				if((data[-1]).strip()):
 					if(counter ==0):
 						date = (data[-1]).strip().replace(",","")
+						if (lastDateFromJson.replace('"', '') == date):
+							breakOutFlag = True
+							break
 						cacheDayData= f"{cacheDayData}"+'\n{"Date": '+f"\"{date}\", "
 						dateInfo = date.split(" ")
 						weekday = datetime.datetime(int(dateInfo[2]), Month[dateInfo[0]], int(dateInfo[1]), 8, 0, 0, 173504).weekday()
@@ -86,6 +92,8 @@ def process_table(_currentJsonContent, _html: str) -> str:
 							tmrPL = round(tmrCloseValue - tempInt,2)
 							tmrCloseValue = tempInt
 					counter+=1
+			if breakOutFlag:
+				break;
 			if (result) and (counter >0):
 				result= f"{result}\"DailyPL\": {tmrPL}" +'},' +f"{cacheDayData}\"OpenCloseDiff\": {openCloseDiff},"
 				cacheDayData = ""
@@ -96,19 +104,22 @@ def process_table(_currentJsonContent, _html: str) -> str:
 
 		#Clear last cache
 		if _currentJsonContent:
-			for y in range(5):
-				((_currentJsonContent["Statistics"])["TotalDay"])[y] +=TotalDay[y]
-				((_currentJsonContent["Statistics"])["TotalDayPositive"])[y] +=TotalDayPositive[y]
-			tmrPL = round(tmrCloseValue - preCloseValueFromJson,2)
-			result= f"{result}\"DailyPL\": {tmrPL}" +'},'
-			((_currentJsonContent["Statistics"])["TotalDay"])[cacheWeekday] +=1
-			if(tmrPL>0):
-				((_currentJsonContent["Statistics"])["TotalDayPositive"])[cacheWeekday] +=1
-			jsonToPrint = json.dumps(_currentJsonContent)
-			jsonToPrint = jsonToPrint.replace('"SPX": [', '"SPX": [' + f"{result}") 
-			jsonToPrint = jsonToPrint.replace('}],', '}],\n')
-			jsonToPrint = jsonToPrint.replace('},{', '},\n{')
-			jsonToPrint = jsonToPrint.replace('}, {', '},\n{')
+			jsonToPrint = ""
+			if result: #only if have valid data to be append
+				for y in range(5):
+					((_currentJsonContent["Statistics"])["TotalDay"])[y] +=TotalDay[y]
+					((_currentJsonContent["Statistics"])["TotalDayPositive"])[y] +=TotalDayPositive[y]
+				tmrPL = round(tmrCloseValue - lastCloseValueFromJson,2)
+				result= f"{result}\"DailyPL\": {tmrPL}" +'},'
+				((_currentJsonContent["Statistics"])["TotalDay"])[cacheWeekday] +=1
+				if(tmrPL>0):
+					((_currentJsonContent["Statistics"])["TotalDayPositive"])[cacheWeekday] +=1
+				jsonToPrint = json.dumps(_currentJsonContent)
+				jsonToPrint = jsonToPrint.replace('"SPX": [', '"SPX": [' + f"{result}") 
+				jsonToPrint = jsonToPrint.replace('}],', '}],\n')
+				jsonToPrint = jsonToPrint.replace('},{', '},\n{')
+				jsonToPrint = jsonToPrint.replace('}, {', '},\n{')
+
 			return (jsonToPrint)
 		else:
 			TotalDay[cacheWeekday]+=1
