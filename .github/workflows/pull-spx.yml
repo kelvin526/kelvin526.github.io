@@ -31,7 +31,7 @@ jobs:
           git add model-spx
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git commit -m "Commiting model"
+          git diff-index --quiet HEAD || git commit -m "Commiting model"
 
       # NOTE: Check that your branch name is correct here
       - name: Git push
