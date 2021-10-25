@@ -1,0 +1,39 @@
+name: Get SPX Manually 
+on:
+  workflow_dispatch
+
+jobs:
+  pull_data_manually:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Pull data
+        run: python3 getspxdata.py
+
+      # NOTE: This commits everything in the `model` directory. Make sure this matches your needs
+      - name: Git commit
+        run: |
+          git add model-spx
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git diff-index --quiet HEAD || git commit -m "Commiting model"
+
+      # NOTE: Check that your branch name is correct here
+      - name: Git push
+        run: |
+          git push "https://${GITHUB_ACTOR}:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:main
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
