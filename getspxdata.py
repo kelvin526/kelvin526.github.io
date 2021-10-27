@@ -48,6 +48,7 @@ def process_table(_currentJsonContent, _html: str) -> str:
 	result = ""
 	lastDateFromJson = "";
 	cacheDayData = ""
+	tmrDate = ""
 	cacheWeekday = 0
 	weekday = 0
 	counter = 0
@@ -75,9 +76,12 @@ def process_table(_currentJsonContent, _html: str) -> str:
 				if((data[-1]).strip()):
 					if(counter ==0):
 						date = (data[-1]).strip().replace(",","")
+						if (tmrDate == date):
+							result = ""
 						if (lastDateFromJson.replace('"', '') == date):
 							breakOutFlag = True
 							break
+						tmrDate = date
 						cacheDayData= f"{cacheDayData}"+'\n{"Date": '+f"\"{date}\", "
 						dateInfo = date.split(" ")
 						weekday = datetime.datetime(int(dateInfo[2]), Month[dateInfo[0]], int(dateInfo[1]), 8, 0, 0, 173504).weekday()
