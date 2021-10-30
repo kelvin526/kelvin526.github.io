@@ -86,30 +86,35 @@ function drawChart()
 	var linePosOpenNegPL = [0,0,0,0,0];
 	var lineNegOpenPosPL = [0,0,0,0,0];
 	var lineNegOpenNegPL = [0,0,0,0,0];
-	var tmrDailyPL = 0
-	var tmrOpen = 0
+	var tmrDailyPL = 0;
+	var tmrOpen = 0;
+	var tmrDoW = -1;
 	for (const _data of spxModel.SPX) {
-		if(tmrOpen > _data.Close)
+		if(tmrDoW >=0)
 		{
-			if(tmrDailyPL>= 0){
-				linePosOpenPosPL[dayStr.indexOf(_data.DoW)]++;
+			if(tmrOpen > _data.Close)
+			{
+				if(tmrDailyPL>= 0){
+					linePosOpenPosPL[tmrDoW]++;
+				}
+				else{
+					linePosOpenNegPL[tmrDoW]++;
+				}
 			}
 			else{
-				linePosOpenNegPL[dayStr.indexOf(_data.DoW)]++;
-			}
-		}
-		else{
-			if(tmrDailyPL>= 0)
-			{
-				lineNegOpenPosPL[dayStr.indexOf(_data.DoW)]++;
-			}
-			else
-			{
-				lineNegOpenNegPL[dayStr.indexOf(_data.DoW)]++;
+				if(tmrDailyPL>= 0)
+				{
+					lineNegOpenPosPL[tmrDoW]++;
+				}
+				else
+				{
+					lineNegOpenNegPL[tmrDoW]++;
+				}
 			}
 		}
 		tmrOpen = _data.Open;
 		tmrDailyPL = _data.DailyPL;
+		tmrDoW = dayStr.indexOf(_data.DoW);
 	}
 	
 	data = new google.visualization.DataTable();
