@@ -75,19 +75,63 @@ function drawChart()
 	}
 	
 	var view = new google.visualization.DataView(data);
-      view.setColumns([0, 1,
-                       { calc: "stringify",
-                         sourceColumn: 1,
-                         type: "string",
-                         role: "annotation" },
-                       2,
-                       { calc: "stringify",
-                         sourceColumn: 2,
-                         type: "string",
-                         role: "annotation" }]);
-	var chart = new google.visualization.ColumnChart(document.getElementById('pnlByDay1'));
+      view.setColumns([0, 1,{ calc: "stringify",sourceColumn: 1,type: "string",role: "annotation" },
+                       2,{ calc: "stringify",sourceColumn: 2,type: "string",role: "annotation" }]);
+	var chart = new google.visualization.ColumnChart(document.getElementById('pnlByDay2')); //ComboChart
 	//chart.draw(view, { 'title': "SPX Daily Data Year " + (year).toString(), 'isStacked': true, 'legend': 'bottom','vAxis': {'title': 'Total days'}, 'colors': ['#3EA055', '#F67280']});
-	chart.draw(view, { 'title': "SPX Daily Data Year " + (year).toString(), 'isStacked': 'percent', 'legend': 'bottom','vAxis': {'title': 'Total days'}, 'colors': ['#3EA055', '#F67280']});
+	chart.draw(view, { 'title': "SPX Daily Data Year " + (year).toString(), 'isStacked': 'percent', 'legend': 'bottom','vAxis': {'title': 'Total days %'}, 'colors': ['#3EA055', '#F67280']});
+
+
+	var linePosOpenPosPL = [0,0,0,0,0];
+	var linePosOpenNegPL = [0,0,0,0,0];
+	var lineNegOpenPosPL = [0,0,0,0,0];
+	var lineNegOpenNegPL = [0,0,0,0,0];
+	var tmrDailyPL = 0
+	var tmrOpen = 0
+	for (const _data of spxModel.SPX) {
+		if(tmrOpen > _data.Close)
+		{
+			if(tmrDailyPL>= 0){
+				linePosOpenPosPL[dayStr.indexOf(_data.DoW)]++;
+			}
+			else{
+				linePosOpenNegPL[dayStr.indexOf(_data.DoW)]++;
+			}
+		}
+		else{
+			if(tmrDailyPL>= 0)
+			{
+				lineNegOpenPosPL[dayStr.indexOf(_data.DoW)]++;
+			}
+			else
+			{
+				lineNegOpenNegPL[dayStr.indexOf(_data.DoW)]++;
+			}
+		}
+		tmrOpen = _data.Open;
+		tmrDailyPL = _data.DailyPL;
+	}
+	
+	data = new google.visualization.DataTable();
+	data.addColumn('string', 'Day of Week');
+	data.addColumn('number', '+O,+PL');
+	data.addColumn('number', '-O,+PL');
+	data.addColumn('number', '-O,-PL');
+	data.addColumn('number', '+O,-PL');
+	for (var i = 0; i < lineNegOpenNegPL.length; i++) {
+		data.addRows([
+		  [dayStr[i], linePosOpenPosPL[i], lineNegOpenPosPL[i],lineNegOpenNegPL[i], lineNegOpenPosPL[i]]
+		]);
+	}
+	console.log(data);
+	view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,{ calc: "stringify",sourceColumn: 1,type: "string",role: "annotation" },
+                       2,{ calc: "stringify",sourceColumn: 2,type: "string",role: "annotation" },
+					   3,{ calc: "stringify",sourceColumn: 3,type: "string",role: "annotation" },
+					   4,{ calc: "stringify",sourceColumn: 4,type: "string",role: "annotation" }]);
+	var chart = new google.visualization.ColumnChart(document.getElementById('pnlByDay3')); //ComboChart
+	chart.draw(view, { 'title': "SPX Daily Open (O) vs PL Trend " + (year).toString(), 'isStacked': 'percent', 'legend': 'bottom','vAxis': {'title': 'Total days %'}, 'colors': ['#3EA055', '#254117', '#F67280', '#7E3517']});
+
 }
 
 function drawChartWithInput(inputValue = 25)
@@ -146,8 +190,8 @@ function drawChartWithInput(inputValue = 25)
                          type: "string",
                          role: "annotation" }]);
 
-	var chart = new google.visualization.ColumnChart(document.getElementById('pnlByDay2'));
-	chart.draw(view, { 'title': titleName + (inputValue).toString(), 'isStacked': 'percent', 'legend': 'bottom','vAxis': {'title': 'Total days'}, 'colors': ['#3EA055', '#F67280']});
+	var chart = new google.visualization.ColumnChart(document.getElementById('pnlByDay1'));
+	chart.draw(view, { 'title': titleName + (inputValue).toString(), 'isStacked': 'percent', 'legend': 'bottom','vAxis': {'title': 'Total days  %'}, 'colors': ['#3EA055', '#F67280']});
 	
 }
 
