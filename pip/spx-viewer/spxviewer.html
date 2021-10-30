@@ -2,8 +2,8 @@
 <html>
 <head> 
     <title> SPX Statistics Viewer</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://www.gstatic.com/charts/loader.js"></script>
 	<link rel="stylesheet" href="./src/spx.css">
 </head> 
 
@@ -34,16 +34,18 @@
 		<div style="text-align:left;"  id="input-area">
 			<span class="inLine">
 				<input type="radio" id="hlr" name="fav_rang" value="hlr" checked="checked">
-				<label for="html">High Low Range</label><br>
+				<label>High Low Range</label><br>
 				<input type="radio" id="cor" name="fav_rang" value="cor">
-				<label for="css">Close Open Range : </label><br>
+				<label>Close Open Range : </label><br>
 				<input type="text" id="rangeInput" value="25" style="margin: 5px 0px 5px 10px; width: 25%; outline-width: 0; ">
 			</span>
 		</div>
-		<div id="pnlByDay2" style="padding-bottom:10px;"></div>
+		<div id="pnlByDay1" style="padding-bottom:10px;"></div>
 		<hr style="height:1.5px;border-width:0;color:#87CEFA;background-color:#87CEFA; margin: 0px 10px;">
 		
-		<div id="pnlByDay1" style="padding-bottom:10px;"></div>
+		<div id="pnlByDay2" style="padding-bottom:10px;"></div>
+		<hr style="height:1.5px;border-width:0;color:#87CEFA;background-color:#87CEFA; margin: 0px 10px;">
+		<div id="pnlByDay3" style="padding-bottom:10px;"></div>
 		<hr style="height:1.5px;border-width:0;color:#87CEFA;background-color:#87CEFA; margin: 0px 10px;">
 	</div>
 	<div class="contentColumn" id="rawData" style="width:65%;">
