@@ -63,6 +63,7 @@ document.getElementById("rangeInput")
 //=================== Function Zone ===================
 function drawChart()
 {
+	/*
 	var data = new google.visualization.DataTable();
 	data.addColumn('string', 'Day of Week');
 	data.addColumn('number', '+ve');
@@ -80,7 +81,7 @@ function drawChart()
 	var chart = new google.visualization.ColumnChart(document.getElementById('pnlByDay2')); //ComboChart
 	//chart.draw(view, { 'title': "SPX Daily Data Year " + (year).toString(), 'isStacked': true, 'legend': 'bottom','vAxis': {'title': 'Total days'}, 'colors': ['#3EA055', '#F67280']});
 	chart.draw(view, { 'title': "SPX Daily Data Year " + (year).toString(), 'isStacked': 'percent', 'legend': 'bottom','vAxis': {'title': 'Total days %'}, 'colors': ['#3EA055', '#F67280']});
-
+	*/
 
 	var linePosOpenPosPL = [0,0,0,0,0];
 	var linePosOpenNegPL = [0,0,0,0,0];
@@ -117,7 +118,7 @@ function drawChart()
 		tmrDoW = dayStr.indexOf(_data.DoW);
 	}
 	
-	data = new google.visualization.DataTable();
+	var data = new google.visualization.DataTable();
 	data.addColumn('string', 'Day of Week');
 	data.addColumn('number', '+O,+PL');
 	data.addColumn('number', '-O,+PL');
@@ -129,12 +130,12 @@ function drawChart()
 		]);
 	}
 	console.log(data);
-	view = new google.visualization.DataView(data);
+	var view = new google.visualization.DataView(data);
       view.setColumns([0, 1,{ calc: "stringify",sourceColumn: 1,type: "string",role: "annotation" },
                        2,{ calc: "stringify",sourceColumn: 2,type: "string",role: "annotation" },
 					   3,{ calc: "stringify",sourceColumn: 3,type: "string",role: "annotation" },
 					   4,{ calc: "stringify",sourceColumn: 4,type: "string",role: "annotation" }]);
-	var chart = new google.visualization.ColumnChart(document.getElementById('pnlByDay3')); //ComboChart
+	var chart = new google.visualization.ColumnChart(document.getElementById('pnlByDay2')); //ComboChart
 	chart.draw(view, { 'title': "SPX Daily Open (O) vs PL Trend " + (year).toString(), 'isStacked': 'percent', 'legend': 'bottom','vAxis': {'title': 'Total days %'}, 'colors': ['#3EA055', '#254117', '#F67280', '#7E3517']});
 
 }
