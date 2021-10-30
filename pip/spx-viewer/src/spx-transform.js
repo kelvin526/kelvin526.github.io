@@ -125,7 +125,7 @@ function drawChart()
 	data.addColumn('number', '+O,-PL');
 	for (var i = 0; i < lineNegOpenNegPL.length; i++) {
 		data.addRows([
-		  [dayStr[i], linePosOpenPosPL[i], lineNegOpenPosPL[i],lineNegOpenNegPL[i], lineNegOpenPosPL[i]]
+		  [dayStr[i], linePosOpenPosPL[i], lineNegOpenPosPL[i],lineNegOpenNegPL[i], linePosOpenNegPL[i]]
 		]);
 	}
 	console.log(data);
