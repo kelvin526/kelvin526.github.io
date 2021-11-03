@@ -93,7 +93,7 @@ function drawChart()
 	for (const _data of spxModel.SPX) {
 		if(tmrDoW >=0)
 		{
-			if(tmrOpen > _data.Close)
+			if(tmrOpen >= _data.Close)
 			{
 				if(tmrDailyPL>= 0){
 					linePosOpenPosPL[tmrDoW]++;
