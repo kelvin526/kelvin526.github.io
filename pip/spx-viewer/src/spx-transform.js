@@ -10,9 +10,11 @@ var dailyData;
 var statisticsData;
 const rawTableHeader = ["Date", "DoW", "Daily P&L", "Open","Close","High","Low","Volume", "Close-Open"];
 const dayStr = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+
 	  
 if(parseInt(year).toString().length == 4)
 {
+	console.log(year)
 	resetErrorMsg();
 	resetContent();
 	jsonFileName =  year.toString();
@@ -23,6 +25,10 @@ if(parseInt(year).toString().length == 4)
 		setContent();
 	})
 	.fail(function() { setErrorMsg("Opss! No data available for year " + year.toString() + "!");  });	
+}
+else if(year)
+{
+	setErrorMsg("Invalid value : <strong>" + year.toString() +"</strong>! Please keyin valid year value <i>eg. 2010, 2021 etc.</i>");
 }
 
 document.getElementById("yearInput")
@@ -129,7 +135,7 @@ function drawChart()
 		  [dayStr[i], linePosOpenPosPL[i], lineNegOpenPosPL[i],lineNegOpenNegPL[i], linePosOpenNegPL[i]]
 		]);
 	}
-	console.log(data);
+	//console.log(data);
 	var view = new google.visualization.DataView(data);
       view.setColumns([0, 1,{ calc: "stringify",sourceColumn: 1,type: "string",role: "annotation" },
                        2,{ calc: "stringify",sourceColumn: 2,type: "string",role: "annotation" },
