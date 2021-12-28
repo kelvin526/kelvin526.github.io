@@ -146,7 +146,7 @@ function drawChart()
 
 }
 
-function drawChartWithInput(inputValue = 25)
+function drawChartWithInput(inputValue = 0) //(inputValue = 25)
 {
 	var data = new google.visualization.DataTable();
 	data.addColumn('string', 'Day of Week');
