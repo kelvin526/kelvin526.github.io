@@ -1,5 +1,4 @@
-{"DLM": "2022-01-02 01:48:05.365932","SPX": [
-{"Date": "Dec 31 2021", "DoW": "Fri", "Open": 4775.21, "High": 4786.83, "Low": 4765.75, "Close": 4766.18, "AdjClose": 4766.18, "Volume": 1340241000, "OpenCloseDiff": -9.03,"DailyPL": 0.01}
-],
-"Statistics": {"TotalDay": [0, 0, 0, 0, 1], "TotalDayPositive": [0, 0, 0, 0, 0]}
-}
+{"DLM": "2022-01-02 01:48:05.365932", "SPX": [
+{"Date": "Jan 03 2022", "DoW": "Mon", "Open": 4778.14, "High": 4796.64, "Low": 4758.17, "Close": 4796.56, "AdjClose": 4796.56, "Volume": 2775190000, "OpenCloseDiff": 18.42,"DailyPL": 30.38},
+{"Date": "Dec 31 2021", "DoW": "Fri", "Open": 4775.21, "High": 4786.83, "Low": 4765.75, "Close": 4766.18, "AdjClose": 4766.18, "Volume": 1340241000, "OpenCloseDiff": -9.03, "DailyPL": 0.01}],
+ "Statistics": {"TotalDay": [1, 0, 0, 0, 1], "TotalDayPositive": [1, 0, 0, 0, 0]}}
