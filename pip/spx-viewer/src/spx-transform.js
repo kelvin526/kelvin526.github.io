@@ -209,7 +209,7 @@ function drawChartWithInput(inputValue = 0) //(inputValue = 25)
 
 function drawCandlestick()
 {
-	var numbDays = 10;
+	var numbDays = 15;
 	//header, high/low, open, close, low/high  > if close-open>0, then: low, open, close, high, else: high, open, close, low
 	var arrData = [];
 	for( var x = numbDays - 1; x>=0; x--)
@@ -246,26 +246,37 @@ function setContent()
 	document.getElementById("dlm").innerHTML = "<b>Last Modified: </b>" + spxModel.DLM + "<b> &emsp; Loaded @ </b>" + Date().slice(16,24);
 	createRawDataTable();
 	createStatisticsView();
+	$('#table').excelTableFilter({
+        columnSelector: '.apply-filter'
+    });
 }
 
 function createRawDataTable()
 {
 	var _rawData = "";
 	//Add header
-	_rawData = _rawData.concat('<table style="width:100%;"><tr>');
-	rawTableHeader.forEach(function(item, array){ _rawData = _rawData.concat('<th>'+`${item}`+'</th>'); 	});
-
+	_rawData = _rawData.concat('<table id="table" style="width:100%;"><thead><tr>');
+	rawTableHeader.forEach(
+		function(item, array){
+			if ((`${item}` == 'DoW') || (`${item}` == 'Date')){
+				_rawData = _rawData.concat('<th class="apply-filter">'+`${item}`+'</th>');
+			}
+			else {
+				_rawData = _rawData.concat('<th >'+`${item}`+'</th>');
+			}
+		});
 	//Add Table content
-	_rawData = _rawData.concat('<tr><td colspan="100" style="padding: 0px; border:0px;"><button type="button" class="collapsible" style="width:100%;" id ="'+`${year}`+'">&#9660;&nbsp;<span style="display: inline-block; width:25%;"> Year : '+`${year}`+'</span></button></td></tr>');
+	_rawData = _rawData.concat('<tr></thead><tbody>');
+
 	for (var dateData of spxModel.SPX) {
 
-		_rawData = _rawData.concat('<tr style="display: none;" class="child',`${year}`,'"><td>',dateData.Date,'</td><td>',dateData.DoW,'</td><td>',dateData.DailyPL,'</td><td>'
+		_rawData = _rawData.concat('<tr style="display: "";" class="child',`${year}`,'"><td>',dateData.Date,'</td><td>',dateData.DoW,'</td><td>',dateData.DailyPL,'</td><td>'
 		  ,dateData.Open,'</td><td>',dateData.Close,'</td><td>',dateData.High,'</td><td>',dateData.Low,'</td><td>',dateData.Volume
 		  ,'</td><td>',dateData.OpenCloseDiff,'</td></tr>');
 	}
 
 	_rawData = _rawData.replaceAll("undefined", "");
-	_rawData = _rawData.concat('</tr></table>');
+	_rawData = _rawData.concat('</tr><tbody></table>');
 	document.getElementById("rawData").innerHTML = _rawData; 	//console.log(`${_rawData}`);
 
 	//Add click event to collapsible content
