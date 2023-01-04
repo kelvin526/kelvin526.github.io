@@ -1,0 +1,5 @@
+{"DLM": "2023-01-04 02:00:10.612782","SPX": [
+{"Date": "Jan 03 2023", "DoW": "Tue", "Open": 3853.29, "High": 3878.46, "Low": 3794.33, "Close": 3824.14, "AdjClose": 3824.14, "Volume": 2353396000, "OpenCloseDiff": -29.15,"DailyPL": 0.01}
+],
+"Statistics": {"TotalDay": [0, 1, 0, 0, 0], "TotalDayPositive": [0, 0, 0, 0, 0]}
+}
