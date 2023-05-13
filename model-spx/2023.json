@@ -1,5 +1,6 @@
 {"DLM": "2023-01-04 02:00:10.612782", "SPX": [
-{"Date": "May 11 2023", "DoW": "Thu", "Open": 4132.24, "High": 4132.80, "Low": 4109.29, "Close": 4130.62, "AdjClose": 4130.62, "Volume": 3752900000, "OpenCloseDiff": -1.62,"DailyPL": -7.02},
+{"Date": "May 12 2023", "DoW": "Fri", "Open": 4138.54, "High": 4143.74, "Low": 4099.12, "Close": 4124.08, "AdjClose": 4124.08, "Volume": 3533740000, "OpenCloseDiff": -14.46,"DailyPL": -6.54},
+{"Date": "May 11 2023", "DoW": "Thu", "Open": 4132.24, "High": 4132.8, "Low": 4109.29, "Close": 4130.62, "AdjClose": 4130.62, "Volume": 3752900000, "OpenCloseDiff": -1.62, "DailyPL": -7.02},
 {"Date": "May 10 2023", "DoW": "Wed", "Open": 4143.74, "High": 4154.28, "Low": 4098.92, "Close": 4137.64, "AdjClose": 4137.64, "Volume": 4057160000, "OpenCloseDiff": -6.1, "DailyPL": 18.47},
 {"Date": "May 09 2023", "DoW": "Tue", "Open": 4124.25, "High": 4130.35, "Low": 4116.65, "Close": 4119.17, "AdjClose": 4119.17, "Volume": 3810140000, "OpenCloseDiff": -5.08, "DailyPL": -18.95},
 {"Date": "May 08 2023", "DoW": "Mon", "Open": 4136.98, "High": 4142.3, "Low": 4123.81, "Close": 4138.12, "AdjClose": 4138.12, "Volume": 3641640000, "OpenCloseDiff": 1.14, "DailyPL": 1.87},
@@ -90,4 +91,4 @@
 {"Date": "Jan 04 2023", "DoW": "Wed", "Open": 3840.36, "High": 3873.16, "Low": 3815.77, "Close": 3852.97, "AdjClose": 3852.97, "Volume": 2595164000, "OpenCloseDiff": 12.61, "DailyPL": 28.83},
 {"Date": "Jan 03 2023", "DoW": "Tue", "Open": 3853.29, "High": 3878.46, "Low": 3794.33, "Close": 3824.14, "AdjClose": 3824.14, "Volume": 2353396000, "OpenCloseDiff": -29.15, "DailyPL": -15.36},
 {"Date": "Dec 30 2022", "DoW": "Fri", "Open": 3829.06, "High": 3839.85, "Low": 3800.34, "Close": 3839.5, "AdjClose": 3839.5, "Volume": 1706136000, "OpenCloseDiff": 10.44, "DailyPL": -9.78}],
- "Statistics": {"TotalDay": [16, 19, 19, 19, 17], "TotalDayPositive": [11, 6, 7, 11, 11]}}
+ "Statistics": {"TotalDay": [16, 19, 19, 19, 18], "TotalDayPositive": [11, 6, 7, 11, 11]}}
