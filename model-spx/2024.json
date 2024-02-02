@@ -1,5 +1,6 @@
 {"DLM": "2024-01-03 01:36:50.727472", "SPX": [
-{"Date": "Jan 31 2024", "DoW": "Wed", "Open": 4899.19, "High": 4906.75, "Low": 4845.15, "Close": 4845.65, "AdjClose": 4845.65, "Volume": 3297263000, "OpenCloseDiff": -53.54,"DailyPL": -79.32},
+{"Date": "Feb 01 2024", "DoW": "Thu", "Open": 4861.11, "High": 4906.97, "Low": 4853.52, "Close": 4906.19, "AdjClose": 4906.19, "Volume": 2808069000, "OpenCloseDiff": 45.08,"DailyPL": 60.54},
+{"Date": "Jan 31 2024", "DoW": "Wed", "Open": 4899.19, "High": 4906.75, "Low": 4845.15, "Close": 4845.65, "AdjClose": 4845.65, "Volume": 3297263000, "OpenCloseDiff": -53.54, "DailyPL": -79.32},
 {"Date": "Jan 30 2024", "DoW": "Tue", "Open": 4925.89, "High": 4931.09, "Low": 4916.27, "Close": 4924.97, "AdjClose": 4924.97, "Volume": 2579106000, "OpenCloseDiff": -0.92, "DailyPL": -2.96},
 {"Date": "Jan 29 2024", "DoW": "Mon", "Open": 4892.95, "High": 4929.31, "Low": 4887.4, "Close": 4927.93, "AdjClose": 4927.93, "Volume": 3525160000, "OpenCloseDiff": 34.98, "DailyPL": 36.96},
 {"Date": "Jan 26 2024", "DoW": "Fri", "Open": 4888.91, "High": 4906.69, "Low": 4881.47, "Close": 4890.97, "AdjClose": 4890.97, "Volume": 3353400000, "OpenCloseDiff": 2.06, "DailyPL": -3.19},
@@ -20,4 +21,4 @@
 {"Date": "Jan 04 2024", "DoW": "Thu", "Open": 4697.42, "High": 4726.78, "Low": 4687.53, "Close": 4688.68, "AdjClose": 4688.68, "Volume": 3715480000, "OpenCloseDiff": -8.74, "DailyPL": -16.13},
 {"Date": "Jan 03 2024", "DoW": "Wed", "Open": 4725.07, "High": 4729.29, "Low": 4699.71, "Close": 4704.81, "AdjClose": 4704.81, "Volume": 2462780000, "OpenCloseDiff": -20.26, "DailyPL": -38.02},
 {"Date": "Jan 02 2024", "DoW": "Tue", "Open": 4745.2, "High": 4754.33, "Low": 4722.67, "Close": 4742.83, "AdjClose": 4742.83, "Volume": 2436433000, "OpenCloseDiff": -2.37, "DailyPL": 0.01}],
- "Statistics": {"TotalDay": [3, 5, 5, 4, 4], "TotalDayPositive": [3, 1, 2, 2, 3]}}
+ "Statistics": {"TotalDay": [3, 5, 5, 5, 4], "TotalDayPositive": [3, 1, 2, 3, 3]}}
